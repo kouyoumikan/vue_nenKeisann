@@ -20,12 +20,16 @@
 <body class="bg-light">
     <div id="app" class="container mt-5">
         <div class="row">
-            <div class="col-md-6 offset-md-6">
+            <div class="col-6 offset-3">
                 <p>
                     <input type="number" name="year" id="year" v-model="year">
                     年は...
+                    <br>
+                    <br>
+                    {{ isUrudoshi ? 'うるう年です' : 'うるう年ではありません' }}
                 </p>
-
+                <br>
+                
                 <table class="table">
                     <tr>
                         <th style="width: 5em;">明治</th>
@@ -67,6 +71,19 @@
             data() {
                 return {
                     year: this_year
+                }
+            },
+            computed: {
+                isUrudoshi: function() {
+                    // 今年がうるう年か算出するプロパティ
+                    if((this.year % 4 == 0) && (this.year % 100 != 0) || (this.year % 400 == 0)) {
+                        // うるう年
+                        return true
+                    }
+                     else {
+                         // うるう年ではない
+                        return false
+                    }
                 }
             }
         }
