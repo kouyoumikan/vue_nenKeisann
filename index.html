@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>西暦から和暦変換の簡単な計算プログラム</title>
+
+    <!-- 
+        参考元URL: Youtube https://youtu.be/2neJ81EUWDM
+     -->
+
+    <!-- BootStrap インストール -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <div id="app" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-6">
+                <p>
+                    <input type="number" name="year" id="year" v-model="year">
+                    年は...
+                </p>
+
+                <table class="table">
+                    <tr>
+                        <th style="width: 5em;">明治</th>
+                        <td>{{ year - 1867 }} 年</td>
+                    </tr>
+
+                    <tr>
+                        <th>大正</th>
+                        <td>{{ year - 1911 }} 年</td>
+                    </tr>
+
+                    <tr>
+                        <th>昭和</th>
+                        <td>{{ year - 1925 }} 年</td>
+                    </tr>
+
+                    <tr>
+                        <th>平成</th>
+                        <td>{{ year - 1988 }} 年</td>
+                    </tr>
+
+                    <tr>
+                        <th>令和</th>
+                        <td>{{ year - 2018 }} 年</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js3 CDN インストール -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <script>
+        var date = new Date
+        var this_year = date.getFullYear() // 現在の年を取得
+
+        const nenKeisan = {
+            data() {
+                return {
+                    year: this_year
+                }
+            }
+        }
+
+        Vue.createApp(nenKeisan).mount('#app')
+    </script>
+    
+</body>
+</html>
